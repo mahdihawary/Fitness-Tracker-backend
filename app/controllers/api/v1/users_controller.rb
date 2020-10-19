@@ -6,6 +6,8 @@ class Api::V1::UsersController < ApplicationController
 
     def create
         user = User.create(user_params)
+        
+        render json: user, only: [:name, :weight]
     end
 
     def update
