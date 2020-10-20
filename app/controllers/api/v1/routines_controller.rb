@@ -13,6 +13,7 @@ class Api::V1::RoutinesController < ApplicationController
         routine = Routine.find(params[:id])
 
         routine.update(routine_params)
+        render json: routine
     end
 
     def index
