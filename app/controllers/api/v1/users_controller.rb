@@ -6,7 +6,7 @@ class Api::V1::UsersController < ApplicationController
 
     def create
         user = User.create(user_params)
-        
+
         render json: user, only: [:name, :weight]
     end
 
@@ -14,6 +14,12 @@ class Api::V1::UsersController < ApplicationController
         user = User.find(params[:id])
 
         user.update(user_params)
+    end
+
+    def index
+        users = User.all
+
+        render json: users
     end
 
     private
