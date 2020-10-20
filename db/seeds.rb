@@ -9,3 +9,8 @@
 User.create(name: "nimr", weight: 15)
 User.create(name: "Zarro", weight: 14)
 User.create(name: "Tom", weight: 18)
+
+Exercise.create(name: "running")
+Exercise.create(name: "swimming")
+Exercise.create(name: "pull-ups")
+Exercise.create(name: "curls")
