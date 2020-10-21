@@ -3,13 +3,17 @@ class Api::V1::DaysController < ApplicationController
   def index
     days = Day.all
 
-    render json: days
+    json_string = DaySerializer.new(days)
+
+    render json: json_string
   end
 
   def create
     day = Day.create(day_params)
     render json: day
   end
+
+ 
 
   private
 

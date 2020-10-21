@@ -1,7 +1,8 @@
 class Api::V1::UsersController < ApplicationController
     def show
         user = User.find(params[:id])
-        render json: user, only: [:name, :weight]
+        json_string = UserSerializer.new(user).serializable_hash
+        render json: json_string
     end
 
     def create
@@ -17,9 +18,10 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def index
-        users = User.all
+    users = User.all
+    
 
-        render json: users
+    render json: users
     end
 
     private
