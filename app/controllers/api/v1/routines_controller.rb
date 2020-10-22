@@ -6,7 +6,8 @@ class Api::V1::RoutinesController < ApplicationController
 
     def show
         routine = Routine.find(params[:id])
-        render json: routine
+        json_string = RoutineSerializer.new(routine).serializable_hash
+        render json: json_string
     end
 
     def update

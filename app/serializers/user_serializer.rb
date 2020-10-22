@@ -2,11 +2,14 @@ class UserSerializer
   include FastJsonapi::ObjectSerializer
   attributes :name, :weight
 
+  attribute :routines do |object|
+    object.routines.as_json
+  end
 
   attribute :day_week do |object|
     now = Date.today
     past_week = (now-6)
-    object.days.find_all{|day| day.date > past_week}
+    object.days.find_all{|day| day.date > past_week} 
   end
 
   attribute :day_month do |object|
