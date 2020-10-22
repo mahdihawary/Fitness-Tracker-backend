@@ -14,40 +14,86 @@ Exercise.destroy_all
 
 
 nimr = User.create(name: "nimr", weight: 15)
-User.create(name: "Zarro", weight: 14)
+zarro = User.create(name: "Zarro", weight: 14)
 tom = User.create(name: "Tom", weight: 18)
 
-run = Exercise.create(name: "running", kind: "cardio")
-swim = Exercise.create(name: "swimming", kind: "cardio")
-pull_up = Exercise.create(name: "pull-ups", kind: "strength")
-curls = Exercise.create(name: "curls", kind: "strength")
+users = [ nimr, zarro, tom ] 
 
-Day.create(user: nimr, exercise: run, date: "2020-10-21", weight: 0, rep: 0, set: 0, distance: 2, time: 20)
-Day.create(user: nimr, exercise: pull_up, date: "2020-10-19", weight: 10, rep: 10, set: 5, distance: 0, time: 0)
-Day.create(user: nimr, exercise: swim, date: "2020-10-20", weight: 10, rep: 10, set: 5, distance: 0, time: 0)
-Day.create(user: nimr, exercise: curls, date: "2020-10-19", weight: 10, rep: 10, set: 5, distance: 0, time: 0)
-Day.create(user: nimr, exercise: swim, date: "2020-10-19", weight: 10, rep: 10, set: 5, distance: 0, time: 0)
-Day.create(user: nimr, exercise: curls, date: "2020-10-19", weight: 10, rep: 10, set: 5, distance: 0, time: 0)
-Day.create(user: nimr, exercise: run, date: "2020-10-20", weight: 10, rep: 10, set: 5, distance: 0, time: 0)
-Day.create(user: nimr, exercise: run, date: "2020-10-20", weight: 10, rep: 10, set: 5, distance: 0, time: 0)
-Day.create(user: nimr, exercise: swim, date: "2020-10-01", weight: 10, rep: 10, set: 5, distance: 0, time: 0)
+cardio_exercises = ["Running", "Swimming", "Biking", "Eliptical", "Rowing"]
 
-Day.create(user: tom, exercise: run, date: "2020-10-21", weight: 0, rep: 0, set: 0, distance: 2, time: 20)
-Day.create(user: tom, exercise: pull_up, date: "2020-10-19", weight: 10, rep: 10, set: 5, distance: 0, time: 0)
-Day.create(user: tom, exercise: swim, date: "2020-10-20", weight: 10, rep: 10, set: 5, distance: 0, time: 0)
-Day.create(user: tom, exercise: curls, date: "2020-10-19", weight: 10, rep: 10, set: 5, distance: 0, time: 0)
-Day.create(user: tom, exercise: swim, date: "2020-10-19", weight: 10, rep: 10, set: 5, distance: 0, time: 0)
-Day.create(user: tom, exercise: run, date: "2020-10-20", weight: 10, rep: 10, set: 5, distance: 0, time: 0)
-Day.create(user: tom, exercise: run, date: "2020-10-20", weight: 10, rep: 10, set: 5, distance: 0, time: 0)
-Day.create(user: tom, exercise: swim, date: "2020-10-01", weight: 10, rep: 10, set: 5, distance: 0, time: 0)
+strength_exercises = ["Bench Press", "Squat", "Military Press", "Row", "Dead Lift", "Leg Press", "Curl", "Tricep Extension", "Dumbell Press", "Shrug"]
 
-routine1 =Routine.create(name: "routine1", user: tom)
-routine2 =Routine.create(name: "routine2", user: nimr)
-routine3 =Routine.create(name: "routine3", user: nimr)
+cardio_exercises.each do |e| 
+  Exercise.create(name: e, kind: "cardio")
+end
 
-routine_exercise1 = RoutineExercise.create(routine: routine1, exercise: run)
-routine_exercise2 = RoutineExercise.create(routine: routine2, exercise: swim)
-routine_exercise3 = RoutineExercise.create(routine: routine3, exercise: swim)
-routine_exercise4 = RoutineExercise.create(routine: routine3, exercise: curls)
-routine_exercise4 = RoutineExercise.create(routine: routine3, exercise: pull_up)
-routine_exercise2 = RoutineExercise.create(routine: routine2, exercise: pull_up)
+strength_exercises.each do |e| 
+  Exercise.create(name: e, kind: "strength")
+end
+
+def randDate
+  Faker::Date.between(from: '2020-09-23', to: '2020-10-21')
+end
+
+def randCardioDistance
+  rand(8)
+end
+
+def randCardioTime(distance)
+  rand(5..10) * distance
+end
+
+def randExerciseId 
+  rand_exercise = Exercise.all.sample()
+end
+
+200.times do 
+  distance = randCardioDistance()
+  exercise = randExerciseId()
+  if exercise.kind == "cardio" 
+    Day.create(
+      user: users.sample(),
+      exercise: exercise,
+      date: randDate(),
+      weight: 0,
+      rep: 0, 
+      set: 0,
+      distance: distance,
+      time: randCardioTime(distance)
+    )
+  elsif randExerciseId().kind == "strength"
+    Day.create(
+      user: users.sample(),
+      exercise: exercise,
+      date: randDate(),
+      weight: rand(10..200),
+      rep: rand(10), 
+      set: rand(6),
+      distance: 0,
+      time: 0
+    )
+  end
+end
+
+25.times do 
+  Routine.create(
+    name: Faker::Team.creature,
+    user: users.sample()
+  )
+
+end
+
+100.times do
+  RoutineExercise.create(
+    routine: Routine.all.sample(),
+    exercise: Exercise.all.sample()
+  )
+end
+
+
+# routine_exercise1 = RoutineExercise.create(routine: routine1, exercise: run)
+# routine_exercise2 = RoutineExercise.create(routine: routine2, exercise: swim)
+# routine_exercise3 = RoutineExercise.create(routine: routine3, exercise: swim)
+# routine_exercise4 = RoutineExercise.create(routine: routine3, exercise: curls)
+# routine_exercise4 = RoutineExercise.create(routine: routine3, exercise: pull_up)
+# routine_exercise2 = RoutineExercise.create(routine: routine2, exercise: pull_up)
