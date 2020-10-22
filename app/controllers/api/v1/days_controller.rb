@@ -13,8 +13,6 @@ class Api::V1::DaysController < ApplicationController
     render json: day
   end
 
- 
-
   private
 
   def day_params

@@ -32,8 +32,21 @@ Day.create(user: nimr, exercise: run, date: "2020-10-20", weight: 10, rep: 10, s
 Day.create(user: nimr, exercise: run, date: "2020-10-20", weight: 10, rep: 10, set: 5, distance: 0, time: 0)
 Day.create(user: nimr, exercise: swim, date: "2020-10-01", weight: 10, rep: 10, set: 5, distance: 0, time: 0)
 
+Day.create(user: tom, exercise: run, date: "2020-10-21", weight: 0, rep: 0, set: 0, distance: 2, time: 20)
+Day.create(user: tom, exercise: pull_up, date: "2020-10-19", weight: 10, rep: 10, set: 5, distance: 0, time: 0)
+Day.create(user: tom, exercise: swim, date: "2020-10-20", weight: 10, rep: 10, set: 5, distance: 0, time: 0)
+Day.create(user: tom, exercise: curls, date: "2020-10-19", weight: 10, rep: 10, set: 5, distance: 0, time: 0)
+Day.create(user: tom, exercise: swim, date: "2020-10-19", weight: 10, rep: 10, set: 5, distance: 0, time: 0)
+Day.create(user: tom, exercise: run, date: "2020-10-20", weight: 10, rep: 10, set: 5, distance: 0, time: 0)
+Day.create(user: tom, exercise: run, date: "2020-10-20", weight: 10, rep: 10, set: 5, distance: 0, time: 0)
+Day.create(user: tom, exercise: swim, date: "2020-10-01", weight: 10, rep: 10, set: 5, distance: 0, time: 0)
+
 routine1 =Routine.create(name: "routine1", user: tom)
 routine2 =Routine.create(name: "routine2", user: nimr)
+routine3 =Routine.create(name: "routine3", user: nimr)
 
 routine_exercise1 = RoutineExercise.create(routine: routine1, exercise: run)
 routine_exercise2 = RoutineExercise.create(routine: routine2, exercise: swim)
+routine_exercise3 = RoutineExercise.create(routine: routine3, exercise: swim)
+routine_exercise4 = RoutineExercise.create(routine: routine3, exercise: curls)
+routine_exercise4 = RoutineExercise.create(routine: routine3, exercise: pull_up)
