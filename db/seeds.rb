@@ -37,3 +37,4 @@ routine2 =Routine.create(name: "routine2", user: nimr)
 
 routine_exercise1 = RoutineExercise.create(routine: routine1, exercise: run)
 routine_exercise2 = RoutineExercise.create(routine: routine2, exercise: swim)
+routine_exercise2 = RoutineExercise.create(routine: routine2, exercise: pull_up)
