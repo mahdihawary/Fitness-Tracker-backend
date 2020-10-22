@@ -21,6 +21,10 @@ class Api::V1::UsersController < ApplicationController
     users = User.all
     
 
+    # def users_exercises
+    #     for user.days where exercise
+    # end
+
     render json: users
     end
 

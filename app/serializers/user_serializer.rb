@@ -42,4 +42,19 @@ class UserSerializer
     object.days.find_all{|day| day.date > past_month}.map{|day|day.exercise}.find_all{|ex| ex.kind == "strength"}.as_json
   end
 
+  attribute :routines do |object|
+    object.routines.all.as_json
+  end
+
+  attribute :exercises do |object|
+    object.exercises.all.as_json
+  end
+
+  # all user's days 
+  attribute :days_month do |object|
+    now = Date.today
+    past_month = (now-29)
+    object.days.find_all{|day| day.date > past_month}.as_json
+  end
+
 end
