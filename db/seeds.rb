@@ -47,10 +47,7 @@ routine3 =Routine.create(name: "routine3", user: nimr)
 
 routine_exercise1 = RoutineExercise.create(routine: routine1, exercise: run)
 routine_exercise2 = RoutineExercise.create(routine: routine2, exercise: swim)
-<<<<<<< HEAD
 routine_exercise3 = RoutineExercise.create(routine: routine3, exercise: swim)
 routine_exercise4 = RoutineExercise.create(routine: routine3, exercise: curls)
 routine_exercise4 = RoutineExercise.create(routine: routine3, exercise: pull_up)
-=======
 routine_exercise2 = RoutineExercise.create(routine: routine2, exercise: pull_up)
->>>>>>> ca17fcfc52f50017cf6da7848c97103c49dfcf68
