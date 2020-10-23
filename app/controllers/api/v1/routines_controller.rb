@@ -24,6 +24,10 @@ class Api::V1::RoutinesController < ApplicationController
 
     def destroy
         routine = Routine.find(params[:id])
+        # find_all routine_exercises where routine_id == routine.id
+        routine.routine_exercises.each do |r_e|
+            r_e.destroy
+        end
         user = routine.user
         routine.routine_exercises.each do |r_e|
             r_e.destroy
