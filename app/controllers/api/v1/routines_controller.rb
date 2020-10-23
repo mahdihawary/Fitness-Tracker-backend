@@ -1,7 +1,8 @@
 class Api::V1::RoutinesController < ApplicationController
     def create
         routine = Routine.create(routine_params)
-        render json: routine
+       
+        render json: routine.user
     end
 
     def show
@@ -19,8 +20,15 @@ class Api::V1::RoutinesController < ApplicationController
 
     def index
         routines = Routine.all
-
         render json: routines
+    end
+
+    def destroy
+        routine = Routine.find(params[:id])
+        user = routine.user
+        routine.destroy
+        routines = Routine.all
+        render json: user
     end
 
     private
