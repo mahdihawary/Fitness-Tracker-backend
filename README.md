@@ -1,24 +1,27 @@
-# README
+# Fitness Tracker Backend
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Fitness Tracker is an app that tracks users exercises and fitness routines. Displays progress through detailed graphs.
 
-Things you may want to cover:
+Built with a Ruby on Rails API backend (this file), and a Vanilla Javascript front-end for Flatiron School Software Engineering Program
 
-* Ruby version
 
-* System dependencies
+## Installation
 
-* Configuration
+Simply run bundle install to install fitness tracker's backend.
 
-* Database creation
+```bash
+bundle install
+```
 
-* Database initialization
+## Usage
 
-* How to run the test suite
+Start up your rails server to begin using
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+rails s
+```
 
-* Deployment instructions
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-* ...
+<!-- ## License -->
